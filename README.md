@@ -6,6 +6,8 @@
 
 ### Links and Resources
 
+https://github.com/codefellows/seattle-code-python-401d19/blob/main/class-17/demo/cf-courses/scraper.py
+
 ### Setup
 
 Install requirements.txt
