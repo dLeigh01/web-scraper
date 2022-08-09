@@ -19,7 +19,8 @@ def retrieve_soup(url):
 def retrieve_citations(paragraphs):
     citations = []
     for paragraph in paragraphs:
-        citations.append(paragraph.select("sup i a span"))
+        if "citation needed" in paragraph.text:
+            citations.append(paragraph.select("sup i a span"))
 
     return tuple(citations)
 
@@ -29,10 +30,15 @@ def get_citations_needed_count(url):
     return len(citations)
 
 def get_citations_needed_report(url):
-    report = f''
+    report = ''
 
-
+    soup = retrieve_soup(url)
+    for item in soup:
+        if "citation" in item.text:
+            report += item.text
+            report += '\n'
 
     return report
 
 print(get_citations_needed_count(url))
+print(get_citations_needed_report(url))
